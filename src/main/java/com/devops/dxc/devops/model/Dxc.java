@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 public class Dxc implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2988002029080131424L;
 	
 	private int dxc;
@@ -26,15 +23,18 @@ public class Dxc implements Serializable{
 	public int getDxc() {
 		return Util.getDxc(ahorro,sueldo);
 	}
+
 	public void setDxc(int dxc) {
 		this.dxc = dxc;
 	}
+
 	public int getSaldo() {
 		return saldo;
 	}
 	public void setSaldo(int saldo) {
 		this.saldo = saldo;
 	}
+
 	public int getImpuesto() {
 		return impuesto;
 	}
