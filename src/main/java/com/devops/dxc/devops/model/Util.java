@@ -1,35 +1,34 @@
 package com.devops.dxc.devops.model;
 
-import com.devops.dxc.devops.rest.RestData;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.core.MediaType;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.function.Supplier;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class Util {
 
     private final static Logger LOGGER = Logger.getLogger(Util.class.getName());
+
     /**
      * Método para cacular el 10% del ahorro en la AFP.  Las reglas de negocio se pueden conocer en 
      * https://www.previsionsocial.gob.cl/sps/preguntas-frecuentes-nuevo-retiro-seguro-10/
      * 
      * @param ahorro
-     * @param sueldo
      * @return
      */
-    public static int getDxc(int ahorro, int sueldo){
+    public static void getDxc(int ahorro, Dxc response) {
         if(((ahorro*0.1)/getUf()) > 150 ){
-            return (int) (150*getUf()) ;
+            response.setDxc((150*getUf()));
         } else if((ahorro*0.1)<=1000000 && ahorro >=1000000){
-            return (int) 1000000;
+            response.setDxc(1000000);
         } else if( ahorro <=1000000){
-            return (int) ahorro;
+            response.setDxc(ahorro);
         } else {
-            return (int) (ahorro*0.1);
+            response.setDxc((int) (ahorro*0.1));
         }
     }
 
@@ -38,14 +37,23 @@ public class Util {
      * que retorne la UF en tiempo real.  Por ejemplo mindicador.cl
      * @return
      */
-    public static int getUf(){
+    public static int getUf() {
 
-       /* Client client = ClientBuilder.newClient();
-        LOGGER.info(String.valueOf(new Date()));
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-        LOGGER.info(formato.format(new Date()));
-        String respuesta = client.target("https://mindicador.cl/api/uf/" + new Date()).request(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).get(String.class);*/
-        return 29000;
+        try {
+
+            RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
+            RestTemplate restTemplate = restTemplateBuilder.build();
+            ResponseEntity<ValorUf> response = restTemplate.getForEntity("https://mindicador.cl/api/uf/" + formato.format(new Date()), ValorUf.class);
+            ValorUf valorUf = response.getBody();
+            List<Serie> listSerie = valorUf.getSerie();
+            LOGGER.info("El valor de la UF es: $" + listSerie.get(0).getValor());
+            return listSerie.get(0).getValor();
+
+        } catch (Exception e) {
+            LOGGER.info("No ha sido posible obtener el valor de la uf, se considera valor aproximado de $30.000");
+        }
+        return 30000;
     }
 
     public static void calcularSaldo(int ahorro, int sueldo, Dxc response) {

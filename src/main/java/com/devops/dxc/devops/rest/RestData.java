@@ -1,5 +1,6 @@
 package com.devops.dxc.devops.rest;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,11 +21,12 @@ public class RestData {
 
     @GetMapping(path = "/calcula-10", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    Dxc getCalcula10(@RequestParam(name = "sueldo") int sueldo, @RequestParam(name = "ahorro") int ahorro) {
+    Dxc getCalcula10(@RequestParam(name = "sueldo") int sueldo, @RequestParam(name = "ahorro") int ahorro) throws IOException {
 
         LOGGER.log(Level.INFO, "Se inicia calculo del 10%");
 
         Dxc response = new Dxc(ahorro, sueldo);
+        Util.getDxc(ahorro,response);
         Util.calcularSaldo(ahorro, sueldo, response);
         Util.calcularImpuesto(sueldo, response);
 
