@@ -91,9 +91,9 @@ public class Util {
             return 4;
         } else if ((41600001 < sueldoAnual) && (sueldoAnual < 53500000)) {
             return 5;
-        } else if ((53000001 < sueldoAnual) && (sueldoAnual < 71400000)) {
+        } else if ((53500001 < sueldoAnual) && (sueldoAnual < 71400000)) {
             return 6;
-        } else if ((71000001 < sueldoAnual)) {
+        } else if ((71400001 < sueldoAnual)) {
             return 7;
         }
         return 1;
