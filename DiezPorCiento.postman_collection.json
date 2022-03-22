@@ -7,73 +7,436 @@
 	"item": [
 		{
 			"name": "dxc ahorro menor 1M",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful request\", function () {",
+							"    pm.expect(pm.response.code).equal(200);",
+							"});",
+							"",
+							"pm.test(\"Dxc is 10 and saldo 0\", function () {",
+							"    let res = pm.response.json();",
+							"    pm.expect(res.dxc).equal(10)",
+							"    pm.expect(res.saldo).equal(0)",
+							"",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=10&ahorro=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"msdxc",
+						"calcula-10"
+					],
+					"query": [
+						{
+							"key": "sueldo",
+							"value": "10"
+						},
+						{
+							"key": "ahorro",
+							"value": "10"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "dxc ahorro mayor 1M",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful request\", () => {",
+							"    pm.expect(pm.response.code).equal(200)",
+							"})",
+							"",
+							"pm.test(\"Dxc is 1M and saldo 1\", () => {",
+							"    let res = pm.response.json()",
+							"    pm.expect(res.saldo).equal(1)",
+							"    pm.expect(res.dxc).equal(1000000)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=10&ahorro=1000001",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"msdxc",
+						"calcula-10"
+					],
+					"query": [
+						{
+							"key": "sueldo",
+							"value": "10"
+						},
+						{
+							"key": "ahorro",
+							"value": "1000001"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "dxc supera maximo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful request\", () => {",
+							"    pm.expect(pm.response.code).equal(200)",
+							"})",
+							"",
+							"pm.test(\"Dxc is 150utm, close to 4.5M\", () => {",
+							"    let res = pm.response.json()",
+							"    pm.expect(res.dxc).to.be.closeTo(4500000, 500000)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=10&ahorro=50000000",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"msdxc",
+						"calcula-10"
+					],
+					"query": [
+						{
+							"key": "sueldo",
+							"value": "10"
+						},
+						{
+							"key": "ahorro",
+							"value": "50000000"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Impuesto tramo 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful request\", () => {",
+							"    pm.expect(pm.response.code).equal(200)",
+							"})",
+							"",
+							"pm.test(\"Dxc is 1M and saldo 1\", () => {",
+							"    let res = pm.response.json()",
+							"    pm.expect(res.impuesto).equal(0)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=1000000&ahorro=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"msdxc",
+						"calcula-10"
+					],
+					"query": [
+						{
+							"key": "sueldo",
+							"value": "1000000"
+						},
+						{
+							"key": "ahorro",
+							"value": "10"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Impuesto tramo 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful request\", () => {",
+							"    pm.expect(pm.response.code).equal(200)",
+							"})",
+							"",
+							"pm.test(\"Dxc is 1M and saldo 1\", () => {",
+							"    let res = pm.response.json()",
+							"    pm.expect(res.impuesto).equal(8)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=1488691&ahorro=100",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"msdxc",
+						"calcula-10"
+					],
+					"query": [
+						{
+							"key": "sueldo",
+							"value": "1488691"
+						},
+						{
+							"key": "ahorro",
+							"value": "100"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Impuesto tramo 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful request\", () => {",
+							"    pm.expect(pm.response.code).equal(200)",
+							"})",
+							"",
+							"pm.test(\"Dxc is 1M and saldo 1\", () => {",
+							"    let res = pm.response.json()",
+							"    pm.expect(res.impuesto).equal(13)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=2481151&ahorro=100",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"msdxc",
+						"calcula-10"
+					],
+					"query": [
+						{
+							"key": "sueldo",
+							"value": "2481151"
+						},
+						{
+							"key": "ahorro",
+							"value": "100"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Impuesto tramo 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful request\", () => {",
+							"    pm.expect(pm.response.code).equal(200)",
+							"})",
+							"",
+							"pm.test(\"Dxc is 1M and saldo 1\", () => {",
+							"    let res = pm.response.json()",
+							"    pm.expect(res.impuesto).equal(23)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=3466667&ahorro=100",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"msdxc",
+						"calcula-10"
+					],
+					"query": [
+						{
+							"key": "sueldo",
+							"value": "3466667"
+						},
+						{
+							"key": "ahorro",
+							"value": "100"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Impuesto tramo 6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful request\", () => {",
+							"    pm.expect(pm.response.code).equal(200)",
+							"})",
+							"",
+							"pm.test(\"Dxc is 1M and saldo 1\", () => {",
+							"    let res = pm.response.json()",
+							"    pm.expect(res.impuesto).equal(30)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=4458334&ahorro=100",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"msdxc",
+						"calcula-10"
+					],
+					"query": [
+						{
+							"key": "sueldo",
+							"value": "4458334"
+						},
+						{
+							"key": "ahorro",
+							"value": "100"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Impuesto tramo 7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful request\", () => {",
+							"    pm.expect(pm.response.code).equal(200)",
+							"})",
+							"",
+							"pm.test(\"Dxc is 1M and saldo 1\", () => {",
+							"    let res = pm.response.json()",
+							"    pm.expect(res.impuesto).equal(35)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=5950001&ahorro=100",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"msdxc",
+						"calcula-10"
+					],
+					"query": [
+						{
+							"key": "sueldo",
+							"value": "5950001"
+						},
+						{
+							"key": "ahorro",
+							"value": "100"
+						}
+					]
+				}
 			},
 			"response": []
 		}
