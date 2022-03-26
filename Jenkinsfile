@@ -19,8 +19,10 @@ pipeline {
             }
         }
 
-        stage('Test with Neuman') {
+
+        stage('Test with Newman') {
             steps {
+                sh "mvn spring-boot:run"
                 sh "newman run DiezPorCiento.postman_collection.json"
             }
         }
