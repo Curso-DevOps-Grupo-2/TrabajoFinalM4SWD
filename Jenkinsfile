@@ -19,10 +19,22 @@ pipeline {
             }
         }
 
+        stage('Package') {
+            steps {
+                sh "mvn package"
+            }
+        }
+
+        stage('Run service') {
+            steps {
+                sh "java -jar target/devops-0.0.1-SNAPSHOT.jar &"
+                sh "sleep 20"
+            }
+        }
+
 
         stage('Test with Newman') {
             steps {
-                sh "mvn spring-boot:run"
                 sh "newman run DiezPorCiento.postman_collection.json"
             }
         }
