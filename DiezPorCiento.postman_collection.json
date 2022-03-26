@@ -31,11 +31,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=10&ahorro=10",
+					"raw": "localhost:8081/rest/msdxc/calcula-10?sueldo=10&ahorro=10",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8081",
 					"path": [
 						"rest",
 						"msdxc",
@@ -80,11 +80,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=10&ahorro=1000001",
+					"raw": "localhost:8081/rest/msdxc/calcula-10?sueldo=10&ahorro=1000001",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8081",
 					"path": [
 						"rest",
 						"msdxc",
@@ -128,11 +128,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=10&ahorro=50000000",
+					"raw": "localhost:8081/rest/msdxc/calcula-10?sueldo=10&ahorro=50000000",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8081",
 					"path": [
 						"rest",
 						"msdxc",
@@ -176,11 +176,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=1000000&ahorro=10",
+					"raw": "localhost:8081/rest/msdxc/calcula-10?sueldo=1000000&ahorro=10",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8081",
 					"path": [
 						"rest",
 						"msdxc",
@@ -224,11 +224,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=1488691&ahorro=100",
+					"raw": "localhost:8081/rest/msdxc/calcula-10?sueldo=1488691&ahorro=100",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8081",
 					"path": [
 						"rest",
 						"msdxc",
@@ -272,11 +272,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=2481151&ahorro=100",
+					"raw": "localhost:8081/rest/msdxc/calcula-10?sueldo=2481151&ahorro=100",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8081",
 					"path": [
 						"rest",
 						"msdxc",
@@ -320,11 +320,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=3466667&ahorro=100",
+					"raw": "localhost:8081/rest/msdxc/calcula-10?sueldo=3466667&ahorro=100",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8081",
 					"path": [
 						"rest",
 						"msdxc",
@@ -368,11 +368,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=4458334&ahorro=100",
+					"raw": "localhost:8081/rest/msdxc/calcula-10?sueldo=4458334&ahorro=100",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8081",
 					"path": [
 						"rest",
 						"msdxc",
@@ -416,11 +416,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/rest/msdxc/calcula-10?sueldo=5950001&ahorro=100",
+					"raw": "localhost:8081/rest/msdxc/calcula-10?sueldo=5950001&ahorro=100",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8081",
 					"path": [
 						"rest",
 						"msdxc",
